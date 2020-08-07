@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import './question.dart';
 import './option.dart';
+import './result.dart';
+import './quiz.dart';
 
 void main() => runApp(MyApp());
 
@@ -19,7 +21,7 @@ class _MyAppState extends State<MyApp> {
 
   //const because it's compile-time constant; it will never change
   //the values in this variable cannot be changed
-  final questions = const [
+  final _questions = const [
     {
       'questionText': "What's your favorite color?",
       'options': ['red', 'green', 'blue'],
@@ -52,7 +54,7 @@ class _MyAppState extends State<MyApp> {
       _questionIndex = _questionIndex + 1;
     });
 
-    if (_questionIndex < questions.length) {}
+    // if (_questionIndex < _questions.length) {}
     print(_questionIndex);
   }
 
@@ -65,27 +67,19 @@ class _MyAppState extends State<MyApp> {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
-          appBar: AppBar(
-            title: Text('Personality Quiz App'),
-          ),
-          body: Center(
-            child: _questionIndex < questions.length
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Question(
-                        questions[_questionIndex]['questionText'],
-                      ),
-                      ...(questions[_questionIndex]['options'] as List<String>).map((option) {
-                        return Option(option, _answerQuestion);
-                      }).toList()
-                    ],
-                  )
-                : Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[Text('Congratulations!')],
-                  ),
-          )),
+        appBar: AppBar(
+          title: Text('Personality Quiz App'),
+        ),
+        body: Center(
+          child: _questionIndex < _questions.length
+              ? Quiz(
+                  questions: _questions,
+                  questionIndex: _questionIndex,
+                  answerQuestion: _answerQuestion,
+                )
+              : Result(),
+        ),
+      ),
     );
   }
 }
