@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Option extends StatelessWidget {
+  //final is a runtime constant value; it can't change at runtime
   final String optionText;
   final Function selectHandler;
 
