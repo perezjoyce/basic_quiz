@@ -38,26 +38,29 @@ class Result extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom: 10),
           child: Text(
-            'You got ' + resultScore.toString() + ' out of ' + numberOfItems.toString(),
+            resultPhrase,
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: 30,
             ),
           ),
         ),
         Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom: 20),
           child: Text(
-            resultPhrase,
+            'You got ' + resultScore.toString() + ' out of ' + numberOfItems.toString(),
             style: TextStyle(
-              fontSize: 20,
+              fontSize: 15,
             ),
           ),
         ),
         FlatButton(
-          child: Text('Restart Quiz'),
+          child: Text(
+            'Restart Quiz',
+          ),
+          color: Colors.red,
+          textColor: Colors.white,
           onPressed: resetHandler,
         ),
       ],
