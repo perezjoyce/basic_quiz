@@ -18,44 +18,47 @@ class MyApp extends StatefulWidget {
 //persists
 class _MyAppState extends State<MyApp> {
   int _questionIndex = 0;
+  int _totalScore = 0;
 
   //const because it's compile-time constant; it will never change
   //the values in this variable cannot be changed
   final _questions = const [
     {
       'questionText': "What's your favorite color?",
-      'options': ['red', 'green', 'blue'],
+      'options': [
+        {'text': 'red', 'score': 1},
+        {'text': 'blue', 'score': 0},
+        {'text': 'green', 'score': 0},
+      ],
     },
     {
       'questionText': "What's your favorite animal?",
-      'options': ['dog', 'cat', 'rat'],
+      'options': [
+        {'text': 'dog', 'score': 0},
+        {'text': 'cat', 'score': 1},
+        {'text': 'bird', 'score': 0},
+      ],
     },
     {
       'questionText': "What's your favorite subject?",
-      'options': ['English', 'Math', 'Science'],
-    },
-    {
-      'questionText': "What's your favorite country?",
-      'options': ['Philippines', 'Not Philippines', 'Mars'],
-    },
-    {
-      'questionText': "What's your favorite movie?",
-      'options': ['Avengers', 'Maudie', 'Little Women'],
-    },
-    {
-      'questionText': "What's your favorite color?",
-      'options': ['pop', 'rock', 'opm'],
+      'options': [
+        {'text': 'Math', 'score': 0},
+        {'text': 'English', 'score': 0},
+        {'text': 'Science', 'score': 1},
+      ],
     },
   ];
 
-  void _answerQuestion() {
+  void _answerQuestion(int score) {
     //calls build of widget where it is located
+
     setState(() {
+      _totalScore += score;
       _questionIndex = _questionIndex + 1;
     });
 
-    // if (_questionIndex < _questions.length) {}
-    print(_questionIndex);
+    print("totalScore");
+    print(_totalScore);
   }
 
   @override
@@ -77,7 +80,7 @@ class _MyAppState extends State<MyApp> {
                   questionIndex: _questionIndex,
                   answerQuestion: _answerQuestion,
                 )
-              : Result(),
+              : Result(_totalScore, _questions.length),
         ),
       ),
     );

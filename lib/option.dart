@@ -5,7 +5,10 @@ class Option extends StatelessWidget {
   final String optionText;
   final Function selectHandler;
 
-  Option(this.optionText, this.selectHandler);
+  Option({
+    @required this.optionText,
+    @required this.selectHandler,
+  });
 
   @override
   Widget build(BuildContext context) {
