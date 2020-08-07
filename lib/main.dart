@@ -36,6 +36,11 @@ class _MyAppState extends State<MyApp> {
     ];
 
     return MaterialApp(
+      title: 'Personality Quiz App',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: Scaffold(
           appBar: AppBar(
             title: Text('Personality Quiz App'),
