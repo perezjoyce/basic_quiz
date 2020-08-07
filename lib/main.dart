@@ -71,14 +71,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Personality Quiz App',
+      title: 'Basic Quiz App',
       theme: ThemeData(
         primarySwatch: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Personality Quiz App'),
+          title: Text('Basic Quiz App'),
         ),
         body: Center(
           child: _questionIndex < _questions.length
