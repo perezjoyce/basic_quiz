@@ -28,12 +28,30 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      "What's your favorite color?",
-      "What's your favorite animal?",
-      "What's your favorite subject?",
-      "What's your favorite country?",
-      "What's your favorite movie?",
-      "What's your favorite music genra?",
+      {
+        'questionText': "What's your favorite color?",
+        'options': ['red', 'green', 'blue'],
+      },
+      {
+        'questionText': "What's your favorite animal?",
+        'options': ['dog', 'cat', 'rat'],
+      },
+      {
+        'questionText': "What's your favorite subject?",
+        'options': ['English', 'Math', 'Science'],
+      },
+      {
+        'questionText': "What's your favorite country?",
+        'options': ['Philippines', 'Not Philippines', 'Mars'],
+      },
+      {
+        'questionText': "What's your favorite movie?",
+        'options': ['Avengers', 'Maudie', 'Little Women'],
+      },
+      {
+        'questionText': "What's your favorite color?",
+        'options': ['pop', 'rock', 'opm'],
+      },
     ];
 
     return MaterialApp(
@@ -51,11 +69,11 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Question(
-                  questions[_questionIndex],
+                  questions[_questionIndex]['questionText'],
                 ),
-                Option('Option 1', _answerQuestion),
-                Option('Option 2', _answerQuestion),
-                Option('Option 3', _answerQuestion),
+                ...(questions[_questionIndex]['options'] as List<String>).map((option) {
+                  return Option(option, _answerQuestion);
+                }).toList()
               ],
             ),
           )),
